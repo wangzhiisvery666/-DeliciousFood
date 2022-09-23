@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ccut.dachuang.mapper.AddressMapper">
+
+    <resultMap id="BaseResultMap" type="com.ccut.dachuang.model.pojo.Address">
+            <id property="id" column="ID" jdbcType="BIGINT"/>
+            <result property="location" column="Location" jdbcType="VARCHAR"/>
+            <result property="permission" column="permission" jdbcType="CHAR"/>
+            <result property="userId" column="user_id" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        ID,Location,permission,
+        user_id
+    </sql>
+    <update id="updatePermissionByUserId">
+        update  address set permission='0' where user_id=#{user_id} and permission='1'
+    </update>
+</mapper>

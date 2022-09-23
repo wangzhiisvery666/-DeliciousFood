@@ -19,4 +19,7 @@ public class CompleteLoginVo {
     //头像
     @ApiModelProperty("头像")
     private String avatar;
+
+    @ApiModelProperty("token")
+    private String token;
 }

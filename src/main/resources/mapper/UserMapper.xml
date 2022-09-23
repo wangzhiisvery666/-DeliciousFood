@@ -13,6 +13,7 @@
             <result property="phoneNumber" column="PHONE_NUMBER" jdbcType="VARCHAR"/>
             <result property="createDate" column="CREATE_DATE" jdbcType="TIMESTAMP"/>
             <result property="updateDate" column="UPDATE_DATE" jdbcType="TIMESTAMP"/>
+
     </resultMap>
 
 
@@ -22,7 +23,13 @@
         AVATAR,SEX,PHONE_NUMBER,
         CREATE_DATE,UPDATE_DATE
     </sql>
+    <update id="updateAvatarByInt" >
+        update music.user set AVATAR=#{newAvatar}  WHERE id=#{id}
+    </update>
+    <update id="updateUsernameById">
+        update music.user set USERNAME=#{username} WHERE id=#{id}
+    </update>
     <select id="userIsExist" resultType="User">
-        select USERNAME,AVATAR from music.user  where  username=#{username} and password=#{password}
+        select ID, USERNAME,AVATAR from music.user  where  username=#{username} and password=#{password}
     </select>
 </mapper>

@@ -15,6 +15,9 @@ import org.apache.ibatis.annotations.Param;
 public interface UserMapper extends BaseMapper<User> {
 
     User userIsExist(@Param("username") String username,@Param("password") String  password );
+
+    int  updateAvatarByInt(@Param("id") Integer id ,@Param("newAvatar") String avatarUrl);
+    int  updateUsernameById(@Param("id") Integer id ,@Param("username") String username);
 }
 
 

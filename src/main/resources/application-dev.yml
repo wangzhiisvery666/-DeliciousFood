@@ -9,6 +9,10 @@ spring:
     #session失效时间
   session:
     timeout: 86400
+  servlet:
+    multipart:
+      max-request-size: 30MB
+      max-file-size: 30MB
 
   # =======================    redis
   redis:

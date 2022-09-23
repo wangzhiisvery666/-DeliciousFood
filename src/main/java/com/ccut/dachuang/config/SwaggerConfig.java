@@ -2,24 +2,21 @@ package com.ccut.dachuang.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.*;
 import springfox.documentation.builders.ApiInfoBuilder;
-import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
-import springfox.documentation.oas.annotations.EnableOpenApi;
 import springfox.documentation.service.ApiInfo;
-import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 
-import java.util.ArrayList;
-
 
 @Configuration
-@EnableOpenApi
-public class SwaggerConfig {
+@EnableWebMvc
+public class SwaggerConfig  implements WebMvcConfigurer {
+
     @Bean
     public Docket api() {
-        return new Docket(DocumentationType.SWAGGER_2)
+        return new Docket(DocumentationType.OAS_30)
                 .select()//扫描的接口
 
                 .apis(RequestHandlerSelectors.basePackage("com.ccut.dachuang.controller")) //扫描的类
@@ -43,7 +40,7 @@ public class SwaggerConfig {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("外卖项目接口文档") // 文档标题
+                .title("外卖项目接口文档1") // 文档标题
                 .description("基本的一些接口说明") // 文档基本描述
 //                .contact(new Contact("xxxx", "https://blog.csdn.net", "1835187730@qq.com")) // 联系人信息
 //                .termsOfServiceUrl("http://terms.service.url/组织链接") // 组织链接

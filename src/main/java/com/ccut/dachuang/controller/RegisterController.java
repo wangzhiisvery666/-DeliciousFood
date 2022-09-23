@@ -58,7 +58,7 @@ public class RegisterController {
             @ApiResponse(code = 106, message = "数据库插入失败"),
 
     })
-    public CommonResponse<String> getVerificationCode(@Param("username") String username,@Param("password") String password ,@Param("phoneNumber") String phoneNumber ){
+    public CommonResponse<String> getVerificationCode( String username,String password , String phoneNumber ){
 
         return userService.getVerificationCode(username,password,phoneNumber);
     }

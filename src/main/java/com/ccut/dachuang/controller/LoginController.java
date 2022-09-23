@@ -3,9 +3,7 @@ package com.ccut.dachuang.controller;
 import com.ccut.dachuang.common.CommonResponse;
 import com.ccut.dachuang.model.VO.CompleteLoginVo;
 import com.ccut.dachuang.service.impl.UserServiceImpl;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
+import io.swagger.annotations.*;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,9 +29,10 @@ public class LoginController {
             @ApiResponse(code = 109, message = "密码为空"),
             @ApiResponse(code = 110, message = "用户名或密码错误"),
     })
-    public CommonResponse<CompleteLoginVo>  doLogin(@Param("username") String username, @Param("password") String password, HttpServletRequest session){
+    @ApiOperation("登陆接口")
+    public CommonResponse<CompleteLoginVo>  doLogin( String username,String password, HttpServletRequest request){
 
-        return  userService.login(username, password, session);
+        return  userService.login(username, password, request);
     }
 
 
@@ -41,9 +40,9 @@ public class LoginController {
     @ApiResponses({
         @ApiResponse(code = 200, message = "成功退出"),
     })
-    public CommonResponse<Boolean>  logOut(HttpServletRequest session,@Param("username") String username,HttpServletRequest request){
-//       request.getHeader()
-         return userService.logOut(session,username);
+    @ApiOperation("退出接口")
+    public CommonResponse<Boolean>  logOut(HttpServletRequest request){
+         return userService.logOut(request);
     }
 
 }
